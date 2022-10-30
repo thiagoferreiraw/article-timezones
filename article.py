@@ -49,6 +49,9 @@ if __name__ == "__main__":
       origin=sao_paulo, 
       destination=manaus, 
       flight_duration=timedelta(hours=4, minutes=15),
-      departure_time=datetime(2022,10,1,16,15, tzinfo=sao_paulo.timezone)
+      # https://groups.google.com/g/django-users/c/rXalwEztfr0/m/QAd5bIJubwAJ
+      # Use sao_paulo.timezone.localize(datetime(2022, 10, 1, 16, 15))
+      # instead of datetime(2022, 10, 1, 16, 15,tzinfo=sao_paulo.timezone)
+      departure_time=sao_paulo.timezone.localize(datetime(2022, 10, 1, 16, 15))
     )
     print(flight)
